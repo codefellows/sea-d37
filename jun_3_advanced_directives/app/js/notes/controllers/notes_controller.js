@@ -35,8 +35,19 @@ module.exports = function(app) {
     $scope.saveNote = function(note) {
       note.editing = false;
       Note.save(note, function(err, data) {
-          if (err) $scope.errors.push({msg: 'could not update note'});
+          if(err) $scope.errors.push({msg: 'could not update note'});
       });
+    };
+
+    $scope.toggleEdit = function(note) {
+      if(note.editing) {
+        note.noteBody = note.noteBodyBackup;
+        note.noteBodyBackup = undefined;
+        note.editing = false;
+      } else {
+        note.noteBodyBackup = note.noteBody;
+        note.editing = true;
+      }
     };
 
     $scope.clearErrors = function() {

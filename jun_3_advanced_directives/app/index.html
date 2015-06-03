@@ -23,14 +23,14 @@
     <ul data-ng-repeat="note in notes">
       <li>{{note.noteBody}}
           <button data-ng-disabled="!note._id" data-ng-click="removeNote(note)">Delete</button>
-          <button data-ng-if="!note.editing" data-ng-disabled="!note._id" data-ng-click="note.editing = true">Edit</button> 
+          <button data-ng-if="!note.editing" data-ng-disabled="!note._id" data-ng-click="toggleEdit(note)">Edit</button> 
           <div data-note-form-directive
                data-save="saveNote(note)"
                data-button-text="'Save Changes'"
                data-label-text="Editing Note: "
                data-ng-if="note.editing"
                data-note="note">
-            <button data-ng-click="note.editing=false">Cancel</button> 
+            <button type="button" data-ng-click="toggleEdit(note)">Cancel</button> 
           </div>
       </li>
     </ul>

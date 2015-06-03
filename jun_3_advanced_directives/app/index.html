@@ -15,7 +15,7 @@
       <button data-ng-click="clearErrors()">Clear Errors</button>
     </aside>
 
-    <div data-new-note-form-directive></div>
+    <div data-new-note-form-directive data-create-new-note="createNewNote(note)"></div>
 
     <ul data-ng-repeat="note in notes">
       <li>{{note.noteBody}}

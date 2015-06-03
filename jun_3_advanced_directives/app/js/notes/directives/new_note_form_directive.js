@@ -6,6 +6,10 @@ module.exports = function(app) {
       restrict: 'A',
       replace: true,
       templateUrl: '/templates/directives/new_note_form.html',
+      scope: {
+        createNewNote: '&'
+      },
+      transclude: true
     };
   });
 };

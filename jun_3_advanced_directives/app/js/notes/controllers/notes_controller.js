@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function(app) {
-  app.controller('notesController', ['$scope', 'RESTResource', function($scope, resource) {
+  app.controller('notesController', ['$scope', 'RESTResource', 'copy', function($scope, resource, copy) {
     var Note = resource('notes');
     $scope.errors = [];
     $scope.notes = [];
@@ -13,9 +13,9 @@ module.exports = function(app) {
       });
     };
 
-    $scope.createNewNote = function() {
-      var newNote = $scope.newNote;
-      $scope.newNote = null;
+    $scope.createNewNote = function(note) {
+      var newNote = copy(note);
+      note.noteBody = '';
       $scope.notes.push(newNote);
       Note.create(newNote, function(err, data) {
         if(err) return $scope.errors.push({msg: 'could not save note: ' + newNote.noteBody});

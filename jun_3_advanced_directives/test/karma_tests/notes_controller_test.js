@@ -32,6 +32,7 @@ describe('notes controller', function() {
     afterEach(function() {
       $httpBackend.verifyNoOutstandingExpectation();
       $httpBackend.verifyNoOutstandingRequest();
+      $httpBackend.resetExpectations();
     });
 
     it('should make a get request on index', function() {

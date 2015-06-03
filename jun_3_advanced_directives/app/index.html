@@ -5,10 +5,7 @@
   <title>Client Side</title>
 </head>
 <body data-ng-app="notesApp">
-  <section data-simple-directive></section>
-  <section data-simple-directive></section>
   <main data-ng-controller="notesController" data-ng-init="getAll()">
-    <section data-simple-directive></section>
     <h1>Notes:</h1>
     <aside data-ng-if="errors.length">
       <h2>Errors:</h2>
@@ -18,10 +15,7 @@
       <button data-ng-click="clearErrors()">Clear Errors</button>
     </aside>
 
-    <form name="newNoteForm" data-ng-submit="createNewNote()">
-      <input type="text" required data-ng-model="newNote.noteBody">
-      <button type="submit" data-ng-disabled="newNoteForm.$invalid">Create New Note</button>
-    </form> 
+    <div data-new-note-form-directive></div>
 
     <ul data-ng-repeat="note in notes">
       <li>{{note.noteBody}}

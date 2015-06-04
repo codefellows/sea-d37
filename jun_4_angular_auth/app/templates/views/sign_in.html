@@ -1,0 +1,9 @@
+<section data-ng-controller="authController">
+  <form data-ng-submit="authSubmit(user)">
+    <label for="username">Username</label>
+    <input type="text" name="username" data-ng-model="user.username">
+    <label for="password">Password</label>
+    <input type="password" name="password" data-ng-model="user.password">
+    <button type="submit">Sign in</button>
+  </form>
+</section>

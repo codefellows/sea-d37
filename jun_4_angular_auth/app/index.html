@@ -5,37 +5,9 @@
   <title>Client Side</title>
 </head>
 <body data-ng-app="notesApp">
-  <main data-ng-controller="notesController" data-ng-init="getAll()">
-    <h1>Notes:</h1>
-    <aside data-ng-if="errors.length">
-      <h2>Errors:</h2>
-      <ul data-ng-repeat="error in errors">
-        <li>{{error.msg}}</li>
-      </ul>
-      <button data-ng-click="clearErrors()">Clear Errors</button>
-    </aside>
+  <div data-logout-directive></div>
+  <main data-ng-view></main>
 
-    <div data-note-form-directive 
-         data-save="createNewNote(note)"
-         data-button-text="'Create New Note'"
-         data-label-text="Create A New Note"></div>
-
-    <ul data-ng-repeat="note in notes">
-      <li>{{note.noteBody}}
-          <button data-ng-disabled="!note._id" data-ng-click="removeNote(note)">Delete</button>
-          <button data-ng-if="!note.editing" data-ng-disabled="!note._id" data-ng-click="toggleEdit(note)">Edit</button> 
-          <div data-note-form-directive
-               data-save="saveNote(note)"
-               data-button-text="'Save Changes'"
-               data-label-text="Editing Note: "
-               data-ng-if="note.editing"
-               data-note="note">
-            <button type="button" data-ng-click="toggleEdit(note)">Cancel</button> 
-          </div>
-      </li>
-    </ul>
-
-  </main>
   <script src="bundle.js"></script>
 </body>
 </html>

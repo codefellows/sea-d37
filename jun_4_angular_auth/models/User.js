@@ -7,7 +7,7 @@ var eat = require('eat');
 var userSchema = mongoose.Schema({
   username: String,
   basic: {
-    email: { type: String, unique: true},
+    email: { type: String},
     password: String
   }
 });

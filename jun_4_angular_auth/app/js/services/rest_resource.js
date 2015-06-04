@@ -14,8 +14,10 @@ module.exports = function(app) {
     };
   };
 
-  app.factory('RESTResource', ['$http', function($http) {
+  app.factory('RESTResource', ['$http', '$cookies', function($http, $cookies) {
     return function(resourceName) {
+      var eat = $cookies.get('eat');
+      $http.defaults.headers.common['eat'] = eat;
       return {
         getAll: function(callback) {
           $http.get('/api/' + resourceName)

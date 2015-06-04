@@ -1,0 +1,6 @@
+<form name="noteForm" data-ng-submit="save({note: note})">
+  <label>{{labelText}}</label>
+  <input type="text" required data-ng-model="note.noteBody">
+  <button type="submit" data-ng-disabled="noteForm.$invalid">{{buttonText}}</button>
+  <div data-ng-transclude></div>
+</form> 

@@ -6,6 +6,6 @@ module.exports = function(app) {
       restrict: 'AC',
       template: '<h2>{{someVal}}</h2><input type="text" data-ng-model="someVal">',
       scope: {}
-    }
+    };
   });
 };

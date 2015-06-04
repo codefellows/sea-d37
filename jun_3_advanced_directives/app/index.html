@@ -5,10 +5,7 @@
   <title>Client Side</title>
 </head>
 <body data-ng-app="notesApp">
-  <section data-simple-directive></section>
-  <section data-simple-directive></section>
   <main data-ng-controller="notesController" data-ng-init="getAll()">
-    <section data-simple-directive></section>
     <h1>Notes:</h1>
     <aside data-ng-if="errors.length">
       <h2>Errors:</h2>
@@ -18,20 +15,23 @@
       <button data-ng-click="clearErrors()">Clear Errors</button>
     </aside>
 
-    <form name="newNoteForm" data-ng-submit="createNewNote()">
-      <input type="text" required data-ng-model="newNote.noteBody">
-      <button type="submit" data-ng-disabled="newNoteForm.$invalid">Create New Note</button>
-    </form> 
+    <div data-note-form-directive 
+         data-save="createNewNote(note)"
+         data-button-text="'Create New Note'"
+         data-label-text="Create A New Note"></div>
 
     <ul data-ng-repeat="note in notes">
       <li>{{note.noteBody}}
           <button data-ng-disabled="!note._id" data-ng-click="removeNote(note)">Delete</button>
-          <button data-ng-if="!note.editing" data-ng-disabled="!note._id" data-ng-click="note.editing = true">Edit</button> 
-          <form name="{{'editing' + note._id}}" data-ng-if="note.editing" data-ng-submit="saveNote(note)">
-            <input type="text" data-ng-model="note.noteBody">
-            <button type="submit">Save Changes</button>
-            <button data-ng-click="note.editing=false">Cancel</button> 
-          </form> 
+          <button data-ng-if="!note.editing" data-ng-disabled="!note._id" data-ng-click="toggleEdit(note)">Edit</button> 
+          <div data-note-form-directive
+               data-save="saveNote(note)"
+               data-button-text="'Save Changes'"
+               data-label-text="Editing Note: "
+               data-ng-if="note.editing"
+               data-note="note">
+            <button type="button" data-ng-click="toggleEdit(note)">Cancel</button> 
+          </div>
       </li>
     </ul>
 

@@ -80,5 +80,5 @@ describe('notes REST api', function() {
           done();
         });
     });
-  })
-})
+  });
+});

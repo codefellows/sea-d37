@@ -13,3 +13,4 @@ require('./notes/controllers/notes_controller')(notesApp);
 
 //directives
 require('./directives/simple_directive')(notesApp);
+require('./notes/directives/note_form_directive')(notesApp);

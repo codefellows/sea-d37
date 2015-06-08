@@ -8,11 +8,19 @@ module.exports = function(grunt) {
   grunt.initConfig({
     webpack: {
       client: {
-        entry: __dirname + '/app/js/client.js',
+        entry: __dirname + '/app/js/client.jsx',
         output: {
           path: 'build/',
           file: 'bundle.js'
-        }
+        },
+        module: {
+          loaders: [
+            {
+              test: /\.jsx$/,
+              loader: 'jsx-loader'  
+            }
+          ]
+        } 
       },
       test: {
         entry: __dirname + '/test/client/test.js',
@@ -20,7 +28,7 @@ module.exports = function(grunt) {
           path: 'test/client/',
           file: 'test_bundle.js'
         }
-      }
+      },
     },
 
     copy: {
